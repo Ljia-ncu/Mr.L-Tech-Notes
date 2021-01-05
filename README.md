@@ -2,17 +2,6 @@
 
 - [x] github: https://github.com/Ljia-ncu
 
-[TOC]
-
-> “理论和思想的提出永远高于其实现” 
-
-```
-记录一些常用技术栈的模板化API/demo以及基本组件的部署，以备参考；
-完善中...
-```
-
-
-
 | env/dev-tools                                          |
 | ------------------------------------------------------ |
 | jdk1.8、maven 3.6.1、IntelliJ IDEA Community Edition； |
