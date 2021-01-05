@@ -1,0 +1,15 @@
+spring:
+  rabbitmq:
+    host: 47.115.138.120
+    port: 5672
+    virtual-host: /mrl
+    username: mrl
+    password: root
+    publisher-confirm-type: correlated #confirm模式
+    publisher-returns: true
+    listener:
+      simple:
+        retry:
+          enabled: true
+        acknowledge-mode: manual #手动ack
+        concurrency: 1  #指定最小消费者数量

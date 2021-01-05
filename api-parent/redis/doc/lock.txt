@@ -1,0 +1,24 @@
+redis锁 基于setnx(k,v) + expire(k)
+e.g. redisTemplate.opsForValue().setIfAbsent(k,v,expire);
+但这里依然会出现一个问题，如机器A业务执行时长超过expire时，此时锁过期释放，机器B获得锁并执行业务，
+这时机器A执行结束 就删除了B的锁；
+
+解锁改进：将锁的value设置为 UUID/服务标识+线程ID，使用lua原子操作；
+if redis.call('get',KEYS[1]) == ARG[1] then return redis.call('del',KEYS[1]) else return 0 end;
+
+过期时间改进：通过守护线程/while 续航过期的锁；
+锁过期时间过长，如果持有锁的线程挂掉，会使得后续大量线程阻塞；
+锁时间过短，持有锁的线程业务未执行结束，锁又被其他线程获取；
+
+---------------------------------
+Redisson lockWatchdogTimeout 30000
+使用Redisson Lock时，如果没有指定leaseTimeout，则使用的lockWatchdogTimeout作为过期时间,续约时间为 10s
+Lock watchdog timeout in milliseconds.This parameter is only used if lock has been
+acquired without leaseTimeout parameter definition. Lock will be expired after
+lockWatchdogTimeout if watchdog didn't extend it to the next lockWatchdogTimeout
+time interval. This prevents against infinity locked locks due to Redisson client
+crush or any other reason when lock can't be released in proper way.
+
+RedLock
+基于N个Master独立的Redis节点，只要超过N/2个Master设置成功，就认为加锁成功；
+解锁：向所有节点发送解锁指令;

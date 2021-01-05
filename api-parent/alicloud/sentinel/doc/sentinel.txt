@@ -1,0 +1,40 @@
+sentinel流控规则推送到应用服务时只是保存在内存中，一旦重启规则就没了;
+所以可以通过nacos将配置信息(流控规则)以Json方式持久化到mysql;
+
+注意spring.cloud.sentinel.datasource配置
+新建配置时需要指定相同的dataID,Group,配置格式
+配置规则 e.g.
+[
+    {
+        "resource": "/sentinel/url",
+        "limitApp": "default",
+        "grade": 1,
+        "count": 1,
+        "strategy": 0,
+        "controlBehavior": 0,
+        "clusterMode": false
+    },{
+        "resource": "nacos-client-fallback",    #feign
+        "limitApp": "default",
+        "grade": 1,
+        "count": 1,
+        "strategy": 0,
+        "controlBehavior": 0,
+        "clusterMode": false
+    },{
+        "resource": "byResource",
+        "limitApp": "default",
+        "grade": 1,
+        "count": 1,
+        "strategy": 0,
+        "controlBehavior": 0,
+        "clusterMode": false
+    }
+]
+resource：资源名称；
+limitApp：来源应用；
+grade：阈值类型，0表示线程数，1表示QPS；
+count：单机阈值；
+strategy：流控模式，0表示直接，1表示关联，2表示链路；
+controlBehavior：流控效果，0表示快速失败，1表示Warm Up，2表示排队等待；
+clusterMode：是否集群。

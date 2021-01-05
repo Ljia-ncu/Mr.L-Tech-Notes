@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  redis:
+    password: 123456
+    timeout: 5000
+    cluster:
+      nodes:
+        - "47.115.138.120:6371"
+        - "47.115.138.120:6372"
+        - "47.115.138.120:6373"
+        - "47.115.138.120:6374"
+        - "47.115.138.120:6375"
+        - "47.115.138.120:6376"
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+    redisson:
+      file: classpath:redisson.yml

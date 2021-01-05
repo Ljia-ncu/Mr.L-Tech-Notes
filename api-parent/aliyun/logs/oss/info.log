@@ -1,0 +1,40 @@
+2020-12-12 19:02:43.281 [main] INFO  OssTest - Starting OssTest on NcuL with PID 11508 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 19:02:43.283 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 19:02:47.859 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 19:02:50.030 [main] INFO  OssTest - Started OssTest in 8.35 seconds (JVM running for 11.774)
+2020-12-12 19:02:50.754 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 19:03:50.978 [main] INFO  OssTest - Starting OssTest on NcuL with PID 18876 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 19:03:50.981 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 19:03:54.457 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 19:03:56.251 [main] INFO  OssTest - Started OssTest in 7.061 seconds (JVM running for 9.428)
+2020-12-12 19:03:57.138 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 19:09:06.199 [main] INFO  OssTest - Starting OssTest on NcuL with PID 18344 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 19:09:06.200 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 19:09:09.843 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 19:09:10.677 [main] INFO  OssTest - Started OssTest in 6.793 seconds (JVM running for 8.482)
+2020-12-12 19:09:11.422 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:04:22.895 [main] INFO  OssTest - Starting OssTest on NcuL with PID 740 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 20:04:22.902 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 20:04:27.265 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:04:29.142 [main] INFO  OssTest - Started OssTest in 8.497 seconds (JVM running for 10.799)
+2020-12-12 20:04:29.411 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:05:02.634 [main] INFO  OssTest - Starting OssTest on NcuL with PID 13812 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 20:05:02.635 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 20:05:09.554 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:05:11.644 [main] INFO  OssTest - Started OssTest in 10.782 seconds (JVM running for 13.573)
+2020-12-12 20:05:11.922 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:25:48.436 [main] INFO  OssTest - Starting OssTest on NcuL with PID 9264 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 20:25:48.487 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 20:25:54.359 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 20:25:56.735 [main] INFO  OssTest - Started OssTest in 10.655 seconds (JVM running for 13.538)
+2020-12-12 20:25:58.507 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 22:52:36.124 [main] INFO  OssTest - Starting OssTest on NcuL with PID 8948 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 22:52:36.135 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 22:52:41.162 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 22:52:42.023 [main] INFO  OssTest - Started OssTest in 6.565 seconds (JVM running for 9.379)
+2020-12-12 22:52:43.841 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-12 23:05:42.971 [main] INFO  OssTest - Starting OssTest on NcuL with PID 16244 (started by Administrator in E:\IDE\api-parent\aliyun)
+2020-12-12 23:05:42.973 [main] INFO  OssTest - The following profiles are active: test
+2020-12-12 23:05:47.058 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-12 23:05:48.027 [main] INFO  OssTest - Started OssTest in 6.174 seconds (JVM running for 8.799)
+2020-12-12 23:05:49.142 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

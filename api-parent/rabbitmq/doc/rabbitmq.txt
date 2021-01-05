@@ -1,0 +1,20 @@
+producer -> rabbitmq broker -> exchange -> queue -> consumer
+消息从 producer 到 exchange 会返回一个confirmCallback;
+1.开启ConnectionFactory的publisher-confirms = true;
+2.rabbitMqTemplate setConfirmCallback回调函数，即消息发送到exchange后回调confirm方法，
+在方法中判断ack是否为true;
+
+消息从 exchange 到 queue 如果投递失败会返回一个returnCallback;
+1.开启publisher-returns = true;
+2.rabbitMqTemplate setReturnCallback退回函数，当消息从exchange到queue失败后，如果设置
+了setMandatory(true),则会将消息退回给producer,并执行回调函数returnMessage;
+
+-------------------------------------------------
+消息还需要在Queue内进行持久化，即rabbitTemplate.convertAndSend时 setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+配置queue时，也需要将元数据配置为durable = "true"
+-------------------------------------------------
+为了确保消费端能正常接收消息
+1.配置acknowledge-mode: manual 手动模式
+2.在RabbitListener中进行手动ack，channel.basicAck(msg.getMessageProperties().getDeliveryTag(),false);
+第一个参数是消息的标识tag;
+第二个参数是批量确认，false确认当前消息，true确认之前消息;

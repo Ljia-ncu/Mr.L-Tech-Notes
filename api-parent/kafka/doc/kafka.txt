@@ -1,0 +1,10 @@
+zk集群搭建--module zookeeper
+
+保证消息不丢失
+1.例 设置--replication-factor 3
+.kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partions 3 --topic test
+partions最好在创建时确定（如果使用hash，再加入partion时会出错）
+
+2.设置最小同步副本 min.insync.replicas =2;
+
+3.producer.acks=all

@@ -1,0 +1,94 @@
+#demo
+service:
+  userService: http://127.0.0.1:7800
+  adminService: http://127.0.0.1:4500
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: ${service.userService}/user/{id}
+          predicates:
+            - Path=/user/{id} #/user/{id} => uri
+        - id: after_route
+          uri: ${service.userService}
+          predicates:
+            - After=2020-11-12T20:20+08:00[Asia/Shanghai] #或者Before、Between(t1,t2)，在时间范围内才能访问
+        - id: cookie_route
+          uri: ${service.userService}
+          predicates:
+            - Cookie=mrl
+        - id: header_route
+          uri: ${service.userService}
+          predicates:
+            - Header=X-Request-Id,\d+
+        - id: host_route
+          uri: ${service.userService}
+          predicates:
+            - Host=**.mrl.com
+        - id: method_route
+          uri: ${service.userService}
+          predicates:
+            - Method=GET
+        - id: query_route
+          uri: ${service.userService}
+          predicates:
+            - Query=name #ip:port/user/getUser?name=mrl
+        - id: remoteAddr_route
+          uri: ${service.userService}
+          predicates:
+            - RemoteAddr=192.168.1.1/24
+        #weight group1中 80%流量走userService
+        - id: weight_high
+          uri: ${service.userService}
+          predicates:
+            - Weight=group1,8
+        - id: weight_low
+          uri: ${service.testService}
+          predicates:
+            - Weight=group1,2
+        - id: add_request_param
+          uri: ${service.userService}
+          filters:
+            - AddRequestParameter=name,mrl #相当于添加了参数name=mrl
+          predicates:
+            - Method=GET
+        - id: strip_prefix_route
+          uri: ${service.userService}
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=2 #/user/p/p/getUser/1 => /user/getUSer/1
+        - id: prefix_path_route
+          uri: ${service.userService}
+          predicates:
+            - Method=GET
+          filters:
+            - PrefixPath=/user #/getName/1 => /user/getName/1
+
+        # 引入hystrix,并声明/fallback mapping
+        - id: hystrix_route
+          uri: ${service.userService}
+          predicates:
+            - Method:GET
+          filters:
+            - name: Hystrix
+              args:
+                name: fallback
+                fallbackUri: forward:/fallback
+        # 重试
+        - id: retry_route
+          uri: ${service.userService}
+          predicates:
+            - Method=GET
+          filters:
+            - name: Retry
+              args:
+                retries: 1
+                statuses: BAD_GATEWAY
+                backoff:
+                  fisrtBackoff: 10ms
+                  maxBackoff: 50ms
+                  factor: 2
+                  basedOnPreviousValue: false

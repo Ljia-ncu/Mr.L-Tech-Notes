@@ -1,0 +1,60 @@
+{
+    "attrs": [
+        {
+            "id": 1,
+            "name": "内存",
+            "values": [
+                "128G",
+                "64G"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "屏幕",
+            "values": [
+                "7.4寸",
+                "7寸"
+            ]
+        }
+    ],
+    "brand": {
+        "name": "brand",
+        "values": [
+            "{\"brandName\":\"小米\",\"brandId\":\"4425\"}",
+            "{\"brandName\":\"华为\",\"brandId\":\"9527\"}"
+        ]
+    },
+    "category": {
+        "name": "category",
+        "values": [
+            "{\"categoryName\":\"手机\",\"categoryId\":\"105\"}"
+        ]
+    },
+    "goods": [
+        {
+            "curPrice": 1488,
+            "onSaleDate": 1607356800000,
+            "oriPrice": 1488,
+            "pic": "http://oss.pic7456",
+            "sales": 120000,
+            "skuId": 7456,
+            "stock": 200000,
+            "subtitle": "6GB+128GB 游戏智能<em>手机</em> 小米 红米",
+            "title": "Redmi Note 9 Pro 5G 一亿像素 骁龙750G 33W快充 120Hz刷新率 碧海星辰"
+        },
+        {
+            "curPrice": 6488,
+            "onSaleDate": 1607356800000,
+            "oriPrice": 6488,
+            "pic": "http://oss.pic9999",
+            "sales": 120000,
+            "skuId": 9999,
+            "stock": 200000,
+            "subtitle": "8GB+128GB亮黑色全网通<em>手机</em>",
+            "title": "华为 HUAWEI Mate 30E Pro 5G麒麟990E SoC芯片 双4000万徕卡电影影像"
+        }
+    ],
+    "pageNum": 1,
+    "pageSize": 20,
+    "total": 2
+}

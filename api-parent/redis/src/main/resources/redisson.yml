@@ -1,0 +1,39 @@
+clusterServersConfig:
+  checkSlotsCoverage: false #因为部署的单机集群，所以会报slot未全部覆盖的错误
+  idleConnectionTimeout: 10000
+  connectTimeout: 10000
+  timeout: 5000
+  retryAttempts: 3
+  retryInterval: 1500
+  failedSlaveReconnectionInterval: 3000
+  failedSlaveCheckInterval: 60000
+  password: 123456
+  subscriptionsPerConnection: 5
+  clientName: null
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> { }
+  subscriptionConnectionMinimumIdleSize: 1
+  subscriptionConnectionPoolSize: 50
+  slaveConnectionMinimumIdleSize: 24
+  slaveConnectionPoolSize: 64
+  masterConnectionMinimumIdleSize: 24
+  masterConnectionPoolSize: 64
+  readMode: "SLAVE"
+  subscriptionMode: "SLAVE"
+  nodeAddresses:
+    - "redis://47.115.138.120:6371"
+    - "redis://47.115.138.120:6372"
+    - "redis://47.115.138.120:6373"
+    - "redis://47.115.138.120:6374"
+    - "redis://47.115.138.120:6375"
+    - "redis://47.115.138.120:6376"
+  scanInterval: 1000
+  pingConnectionInterval: 0
+  keepAlive: false
+  tcpNoDelay: false
+threads: 12
+nettyThreads: 24
+codec: !<org.redisson.codec.MarshallingCodec> { }
+transportMode: "NIO"
+
+#singleServerConfig:
+#  address: "redis://127.0.0.1:6379"

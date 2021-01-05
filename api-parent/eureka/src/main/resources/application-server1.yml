@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: eureka-server1.com #在host内配置域名映射，高可用下不能重复
+    prefer-ip-address: false #为true表示用ip地址进行注册，对应的service-url应改为ip地址形式，否则ip与域名无法匹配导致注册失败
+  client:
+    fetch-registry: true  #高可用设置为true,否则会出现unavailable-replicas
+    register-with-eureka: true #同上
+    service-url:
+      defaultZone: http://eureka-server2.com:8002/eureka/ #高可用下设置为其他server的url，逗号分隔
+  server:
+    enable-self-preservation: false #直接剔除不发送心跳的服务，而不是保存

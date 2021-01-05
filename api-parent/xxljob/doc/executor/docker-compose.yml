@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  exec1:
+    build: .
+    image: exec
+    container_name: exec1
+    volumes:
+      - /mydata/executor:/data/applogs/xxl-job
+    ports:
+      - 8080:8080
+      - 8089:9999
+    environment:
+      - JAVA_OPTS=-Xms128m -Xmx128m
+      - EXECUTOR_ADDRESS=http://47.115.138.120:8089   #可选配置，可以直接在admin中修改
+    restart: always
+  exec2:
+    image: exec
+    container_name: exec2
+    volumes:
+      - /mydata/executor:/data/applogs/xxl-job
+    ports:
+      - 8081:8080
+      - 8090:9999
+    environment:
+      - JAVA_OPTS=-Xms128m -Xmx128m
+      - EXECUTOR_ADDRESS=http://47.115.138.120:8090
+    restart: always

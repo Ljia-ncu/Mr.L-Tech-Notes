@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-admin
+  security:
+    user:
+      name: mrl
+      password: 123456
+  boot:
+    admin:
+      discovery:
+        ignored-services:
+          - ${spring.application.name}
+
+server:
+  port: 9200
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server1.com:8001/eureka,http://eureka-server2.com:8002/eureka
+

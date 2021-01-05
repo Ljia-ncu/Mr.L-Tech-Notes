@@ -1,0 +1,22 @@
+server:
+  port: 8600
+
+spring:
+  application:
+    name: open-feign
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server1.com:8001/eureka,http://eureka-server2.com:8002/eureka
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  isolation:
+    thread:
+      timeoutMilliseconds: 5000

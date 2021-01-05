@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: mylog
+  profiles:
+    active: prod #see logStartupProfileInfo

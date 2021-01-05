@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+dubbo:
+  application:
+    name: dubbo-consumer
+  registry:
+    address: nacos://localhost:8848
+    register: false #消费服务，不进行注册

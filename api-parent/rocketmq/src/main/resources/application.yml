@@ -1,0 +1,9 @@
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: test-pg-tx #test-pg
+    send-message-timeout: 3000
+  consumer:
+    group: test-cg
+    topic: anno-topic-tx #anno-topic
+    select-exp: '*'

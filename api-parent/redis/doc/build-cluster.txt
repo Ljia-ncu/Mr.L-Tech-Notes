@@ -1,0 +1,20 @@
+#注意先配置安全组 6371/6376 16371/16376
+
+1.生成集群节点配置文件
+. build-conf.sh
+
+2.build
+docker-compose up -d
+
+3.进入后台
+docker exec -it redis1 /bin/bash
+
+4.构建集群
+redis-cli -a 123456 --cluster create 47.115.138.120:6371 47.115.138.120:6372 47.115.138.120:6373 47.115.138.120:6374 47.115.138.120:6375 47.115.138.120:6376 --cluster-replicas 1
+
+5.进入控制台，cluster nodes查看集群状态
+redis-cli -a 123456 -c -p 6371
+cluster nodes
+
+#批量操作
+docker stop/rm/start `docker ps -a | grep redis | awk '{print $1}'`

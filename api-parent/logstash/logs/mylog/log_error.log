@@ -1,0 +1,5 @@
+2020-12-13 11:27:16.979 [main] ERROR com.mrl.logback.service.TestService - error
+2020-12-13 11:30:10.523 [main] ERROR com.mrl.logback.service.TestService - error
+2020-12-13 12:00:19.428 [main] ERROR com.mrl.logback.service.TestService - error
+2020-12-13 12:09:49.362 [main] ERROR com.mrl.logback.service.TestService - error
+2020-12-13 12:10:57.067 [main] ERROR com.mrl.logback.service.TestService - error

@@ -1,0 +1,14 @@
+http://rocketmq.apache.org/release_notes/
+
+这里本地部署测试环境 单master模式
+注意配置 ROCKETMQ_HOME 系统环境变量；
+
+#修改runbroker.cmd中配置的JAVA_OPT参数
+set "JAVA_OPT=%JAVA_OPT% -cp "%CLASSPATH%"" #这里%CLASSPATH%两侧再加双引号，避免因program file空格问题而报找不到jdk主类错误
+set "JAVA_OPT=%JAVA_OPT% -server -Xms256m -Xmx256m -Xmn128m" #配置堆大小
+
+#启动nameserver
+start mqnamesrv.cmd
+
+#在/bin目录下执行
+start mqbroker.cmd -n localhost:9876

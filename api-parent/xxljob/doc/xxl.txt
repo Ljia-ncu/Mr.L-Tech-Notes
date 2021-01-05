@@ -1,0 +1,15 @@
+https://github.com/xuxueli/xxl-job/
+
+#访问地址
+http://ip:port/xxl-job-admin
+admin/123456
+
+1.调度中心 -> 执行器管理 -> 创建一个appname为xxl-job-executor-mrl的执行器，名称与xxl.job.executor.appname一致
+2.调度中心 -> 任务管理 -> 选择xxl-job-executor-mrl执行器，指定JobHandler为demoJobHandler(名称与@XxlJob中配置的一致)
+
+3.docker部署executor时还需要暴露内置jetty-server:9999端口;
+另外executor获取到的ip是内网地址，可以在步骤1配置为手动录入，如172.25.0.2:9999 -> 43.115.138.120:9999
+-----------------------------------------------------------
+理解xxljob配置的关键 就在于内置的netty服务器
+webapp 向admin调度中心注册 executor的ip与端口，这其实就是netty服务器的ip&端口
+然后由调度中心进行负载均衡并且进行rpc反射调用executor的JobHandler接口

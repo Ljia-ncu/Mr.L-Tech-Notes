@@ -1,0 +1,14 @@
+#docker-compose up -d
+version: '3.8'
+services:
+  mrl-oss:
+    build: .
+    #dockerfile: Dockerfile
+    image: mrl-oss
+    container_name: mrl-oss
+    volumes:
+      - /mrl/logs/oss:/logs/oss
+    environment:
+      - JAVA_OPTS=-Xms128m -Xmx128m -XX:+HeapDumpOnOutOfMemoryError
+    ports:
+      - "8080:8080"

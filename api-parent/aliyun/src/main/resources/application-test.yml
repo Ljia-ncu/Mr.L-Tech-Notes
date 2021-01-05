@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: ***
+    accessKeySecret: ***
+    bucketName: mrl-oss
+    policyExpire: 300 #秒
+    maxSize: 10 #MB
+    callback: http://47.115.138.120:8080/aliyun/oss/callback
+    dirPrefix: img/

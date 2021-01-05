@@ -1,0 +1,4 @@
+edit configuration
+-> copy configuration
+-> edit name -> EurekaApplication2
+-> environment variables : spring.profiles.active=server2

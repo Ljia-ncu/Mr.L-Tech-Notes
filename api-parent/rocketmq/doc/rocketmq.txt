@@ -1,0 +1,42 @@
+详细
+=》 https://github.com/apache/rocketmq/tree/master/docs/cn
+
+broker负责存储消息，可以存储多个topic的消息；
+topic最好分片到多个broker，以实现高可用，因为同步双写模式下broker主从不支持slave升主；
+
+Producer 支持同步发送、异步发送、顺序发送、单向发送；同步、异步都需要broker确认；
+
+Broker Server 负责接收从生产者发送来的消息并存储、同时为消费者的拉取请求作准备;
+同时也存储消息相关的元数据，包括消费者组、消费进度偏移和主题和队列消息等；
+
+Name Server 生产者或消费者能够通过名字服务查找各主题相应的Broker IP列表;
+注意NameServer集群相互独立，不进行信息交换;
+
+Pull/Push Consumer 推动式消费 -Broker收到数据后主动推送给消费端；
+拉取式消费 -Consumer主动去Broker服务器拉取；
+
+Producer Group同一类Producer集合；
+如果发送事务消息时该生产者奔溃，Broker会通知同组的另一个生产者提交或回滚；
+
+Consumer Group同一类Consumer的集合;
+注意消费者组的消费者实例必须订阅完全相同的Topic
+集群消费 -相同Consumer Group的每个Consumer实例平均分摊消息；
+广播消费 -相同Consumer Group的每个Consumer实例都接收全量的消息；
+
+Message 包含消息、MessageID、业务标识Key；
+
+Tag 用于同一主题下区分不同类型的消息,消费者可以根据Tag实现对不同子主题的不同消费逻辑;
+---------------------------------------
+发布 生产者向某个topic发送消息
+订阅 消费者关注了topic中带有某些tag的消息
+
+顺序消息 分为全局顺序消息与分区顺序消息
+全局顺序 是指某个topic下的所有消息都要保证顺序，所有消息按照严格的fifo顺序进行发布消费；
+分区顺序 对于指定的一个topic,所有消息根据sharding key 进行区块分区，同一分区内的消息保证顺序；
+
+--------------------------------------
+集群
+多master多slave模式 异步复制
+消息实时性高，但master宕机时磁盘可能会丢失少量数据;
+
+同步双写 性能略低于异步复制，不支持主备切换

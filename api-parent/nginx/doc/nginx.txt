@@ -1,0 +1,5 @@
+nginx可用来做SSL消除、响应压缩、多网关LB、https、静态资源服务;
+一般配置双机热备 + gateway集群，以实现 nginx4层负载 以及 gateway7层负载；
+
+LVS：Linux Virtual Server,是一个基于传输层的反向代理服务器，已收入内核；
+Keepalived: 在Lvs基础上实现心跳检测，监控服务器实现故障转移；

@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:latest #mysql8
+    container_name: mysql8
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nacos_config
+      MYSQL_USER: nacos #直接授权
+      MYSQL_PASSWORD: nacos
+    ports:
+      - "3306:3306"
+    volumes:
+      - /mydata/mysql/data/db:/var/lib/mysql
+      - /mydata/mysql/data/conf:/etc/mysql #my.cnf
+      - /mydata/mysql/log:/var/log/mysql
+  nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos
+    restart: always
+    depends_on: #类似link,可直接ping通mysql
+      - mysql
+    env_file:
+      - ./nacos-standalone.env
+    environment:
+      JVM_XMS: 512m #ecs 1核2G，这里限制堆大小
+      JVM_XMX: 512m
+      JVM_XMN: 256m
+    volumes:
+      - /mydata/nacos/standalone-logs/:/home/nacos/logs
+      - /mydata/nacos/conf:/home/nacos/init.d
+    ports:
+      - "8848:8848"
+      - "9555:9555"

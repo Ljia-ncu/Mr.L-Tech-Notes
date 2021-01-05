@@ -1,0 +1,28 @@
+2020-12-13 11:27:12.713 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 10836 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 11:27:12.718 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 11:27:14.861 [main] INFO  LogBackTest - Started LogBackTest in 5.228 seconds (JVM running for 15.062)
+2020-12-13 11:27:16.976 [main] INFO  com.mrl.logback.service.TestService - info
+2020-12-13 11:30:08.612 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 12580 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 11:30:08.615 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 11:30:10.069 [main] INFO  LogBackTest - Started LogBackTest in 3.512 seconds (JVM running for 5.784)
+2020-12-13 11:30:10.521 [main] INFO  com.mrl.logback.service.TestService - info
+2020-12-13 12:00:17.141 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 14064 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 12:00:17.143 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 12:00:18.327 [main] INFO  LogBackTest - Started LogBackTest in 3.061 seconds (JVM running for 5.01)
+2020-12-13 12:00:19.427 [main] INFO  com.mrl.logback.service.TestService - info
+2020-12-13 12:09:46.801 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 5928 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 12:09:46.805 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 12:09:48.827 [main] INFO  LogBackTest - Started LogBackTest in 3.947 seconds (JVM running for 6.09)
+2020-12-13 12:09:49.360 [main] INFO  com.mrl.logback.service.TestService - info
+2020-12-13 12:10:54.459 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 16500 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 12:10:54.468 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 12:10:56.078 [main] INFO  LogBackTest - Started LogBackTest in 3.593 seconds (JVM running for 6.849)
+2020-12-13 12:10:57.065 [main] INFO  com.mrl.logback.service.TestService - info
+2020-12-13 12:27:40.051 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 4844 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 12:27:40.055 [main] INFO  LogBackTest - The following profiles are active: dev
+2020-12-13 12:27:40.999 [main] INFO  LogBackTest - Started LogBackTest in 3.299 seconds (JVM running for 5.43)
+2020-12-13 12:27:41.502 [main] INFO  com.mrl.logback.service.TestService - {"IP":"127.0.0.1","Operation":"test()","Result":"200"}
+2020-12-13 12:28:28.162 [main] INFO  LogBackTest - Starting LogBackTest on NcuL with PID 14880 (started by Administrator in E:\IDE\api-parent\logback)
+2020-12-13 12:28:28.164 [main] INFO  LogBackTest - The following profiles are active: prod
+2020-12-13 12:28:29.341 [main] INFO  LogBackTest - Started LogBackTest in 3.475 seconds (JVM running for 5.712)
+2020-12-13 12:28:29.799 [main] INFO  com.mrl.logback.service.TestService - {"IP":"127.0.0.1","Operation":"test()","Result":"200"}

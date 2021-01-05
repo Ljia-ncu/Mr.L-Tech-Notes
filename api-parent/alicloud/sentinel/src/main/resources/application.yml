@@ -1,0 +1,42 @@
+server:
+  port: 7450
+
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    nacos:
+      username: nacos
+      password: root
+      discovery:
+        #server-addr: 47.115.138.120:8848
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+      datasource:
+        flow:
+          nacos:
+            #serverAddr: 47.115.138.120:8848
+            serverAddr: localhost:8848
+            dataId: ${spring.application.name}-sentinel
+            groupId: DEFAULT_GROUP
+            dataType: json
+            ruleType: flow
+
+feign:
+  sentinel:
+    enabled: true
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    root: info

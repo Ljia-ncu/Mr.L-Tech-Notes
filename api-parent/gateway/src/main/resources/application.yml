@@ -1,0 +1,41 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway
+  redis:
+    host: localhost
+      port: 6379
+      database: 1
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #从注册中心动态创建路由
+          lower-case-service-id: true
+      routes:
+        - id: user-route
+          uri: lb://eureka-client
+          predicates:
+            - Path=/client/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 #每秒允许处理的请求数量
+                redis-rate-limiter.burstCapacity: 2 #每秒最大处理的请求数量
+                key-resolver: "#{@ipKeyResolver}" #限流策略，对应策略的Bean
+        - id: index-route
+          uri: lb://eureka-client
+          predicates:
+            - Path=/api/index/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server1.com:8001/eureka,http://eureka-server2.com:8002/eureka
+

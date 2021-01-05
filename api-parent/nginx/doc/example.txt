@@ -1,0 +1,68 @@
+########### 每个指令必须有分号结束。#################
+#user administrator administrators;  #配置用户或者组，默认为nobody nobody。
+#worker_processes 2;  #允许生成的进程数，默认为1
+#pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址
+error_log log/error.log debug;  #制定日志路径，级别。这个设置可以放入全局块，http块，server块，级别以此为：debug|info|notice|warn|error|crit|alert|emerg
+events {
+    accept_mutex on;   #设置网路连接序列化，防止惊群现象发生，默认为on
+    multi_accept on;  #设置一个进程是否同时接受多个网络连接，默认为off
+    #use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport
+    worker_connections  1024;    #最大连接数，默认为512
+}
+http {
+    include       mime.types;   #文件扩展名与文件类型映射表
+    default_type  application/octet-stream; #默认文件类型，默认为text/plain
+    #access_log off; #取消服务日志
+    log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for'; #自定义格式
+    access_log log/access.log myFormat;  #combined为日志格式的默认值
+    sendfile on;   #允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。
+    sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。
+    keepalive_timeout 65;  #连接超时时间，默认为75s，可以在http，server，location块。
+
+    upstream mysvr {
+      #ip_hash;
+      server 127.0.0.1:8081;
+      server 127.0.0.1:8082;
+      #server 192.168.10.121:3333 backup;  #热备
+    }
+    error_page 404 https://www.baidu.com; #错误页
+
+    server {
+        #keepalive_requests 120; #单连接请求上限次数。
+        listen       80;   #监听端口
+        server_name  127.0.0.1;   #监听地址
+
+        #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。
+        location  ~*^.+$ {
+           root /usr/share/nginx/html;  #根目录
+           index index.html;  #设置默认页
+           proxy_pass  http://mysvr;  #请求转向mysvr 定义的服务器列表
+           deny 127.0.0.1;  #拒绝的ip
+           allow 172.18.5.54; #允许的ip
+        }
+
+        #当访问nginx的ip:port/test时，默认以轮询方式访问mysvr下的资源服务
+        location ~ /test {
+            proxy_pass  http://mysvr;
+            #proxy_connect_timeout 10;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+
+        #动态文件与静态文件一起发布，可通过nginx进行分离；
+        #expires参数设置浏览器缓存的过期时间，以减少与服务器之间的请求与流量；
+        #如expires 3d，则表示在三天之内，如果请求与服务器最近的更新内容没有差别，就不会从服务器抓取；
+        location /www/ {
+            root /mydata; #指定静态资源路径
+            index index.html index.htm
+        }
+
+        location /image/ {
+            root /mydata/image;
+            autoindex on; #列出访问目录
+        }
+    }
+}

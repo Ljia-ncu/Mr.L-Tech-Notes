@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: seata1
+
+logging:
+  level:
+    root: info

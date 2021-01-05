@@ -1,0 +1,8 @@
+server:
+  port: 7401
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

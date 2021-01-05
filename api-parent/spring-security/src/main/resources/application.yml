@@ -1,0 +1,8 @@
+server:
+  port: 8080
+jwt:
+  secret: SPRINGSECURITYISGOOD
+  expiration: 14 #days
+logging:
+  level:
+    root: debug

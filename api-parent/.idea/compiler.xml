@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xxljob" />
+        <module name="eureka" />
+        <module name="admin" />
+        <module name="threadpool" />
+        <module name="redis" />
+        <module name="springboot" />
+        <module name="nacos" />
+        <module name="logstash" />
+        <module name="elasticsearch" />
+        <module name="canal" />
+        <module name="aliyun" />
+        <module name="netty" />
+        <module name="openfeign" />
+        <module name="sentinel" />
+        <module name="nginx" />
+        <module name="rocketmq" />
+        <module name="zookeeper" />
+        <module name="api-common" />
+        <module name="rabbitmq" />
+        <module name="api-common-db" />
+        <module name="dubbo-interface" />
+        <module name="eureka-client" />
+        <module name="dubbo-provider" />
+        <module name="kafka" />
+        <module name="spring-security" />
+        <module name="mybatis-plus" />
+        <module name="gateway" />
+        <module name="openfeign-interface" />
+        <module name="seata" />
+        <module name="dubbo-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
+      <module name="alicloud" target="1.8" />
+      <module name="aliyun" target="1.8" />
+      <module name="api-common" target="1.8" />
+      <module name="api-common-db" target="1.8" />
+      <module name="api-parent" target="1.8" />
+      <module name="canal" target="1.8" />
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-consumer" target="1.8" />
+      <module name="dubbo-interface" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="elasticsearch" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="eureka-client" target="1.8" />
+      <module name="gateway" target="1.8" />
+      <module name="kafka" target="1.8" />
+      <module name="logstash" target="1.8" />
+      <module name="mybatis-plus" target="1.8" />
+      <module name="nacos" target="1.8" />
+      <module name="netty" target="1.8" />
+      <module name="nginx" target="1.8" />
+      <module name="openfeign" target="1.8" />
+      <module name="openfeign-interface" target="1.8" />
+      <module name="rabbitmq" target="1.8" />
+      <module name="redis" target="1.8" />
+      <module name="rocketmq" target="1.8" />
+      <module name="seata" target="1.8" />
+      <module name="sentinel" target="1.8" />
+      <module name="spring-security" target="1.8" />
+      <module name="springboot" target="1.8" />
+      <module name="threadpool" target="1.8" />
+      <module name="xxljob" target="1.8" />
+      <module name="zookeeper" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
+      <module name="aliyun" options="-parameters" />
+      <module name="api-common" options="-parameters" />
+      <module name="api-common-db" options="-parameters" />
+      <module name="canal" options="-parameters" />
+      <module name="dubbo-consumer" options="-parameters" />
+      <module name="dubbo-interface" options="-parameters" />
+      <module name="dubbo-provider" options="-parameters" />
+      <module name="elasticsearch" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="eureka-client" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="kafka" options="-parameters" />
+      <module name="logstash" options="-parameters" />
+      <module name="mybatis-plus" options="-parameters" />
+      <module name="nacos" options="-parameters" />
+      <module name="netty" options="-parameters" />
+      <module name="nginx" options="-parameters" />
+      <module name="openfeign" options="-parameters" />
+      <module name="openfeign-interface" options="-parameters" />
+      <module name="rabbitmq" options="-parameters" />
+      <module name="redis" options="-parameters" />
+      <module name="rocketmq" options="-parameters" />
+      <module name="seata" options="-parameters" />
+      <module name="sentinel" options="-parameters" />
+      <module name="spring-security" options="-parameters" />
+      <module name="springboot" options="-parameters" />
+      <module name="threadpool" options="-parameters" />
+      <module name="xxljob" options="-parameters" />
+      <module name="zookeeper" options="-parameters" />
+    </option>
+  </component>
+</project>

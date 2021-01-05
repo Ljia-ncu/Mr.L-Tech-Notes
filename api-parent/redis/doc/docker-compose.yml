@@ -1,0 +1,70 @@
+version: "3.8"
+services:
+  redis1:
+    container_name: redis1
+    image: redis:latest
+    #使用host模式，就不指定ports了
+    #如果使用network子网，RedisDeskManager在进行redirect时就没法跳转，所以必须用公网连接
+    network_mode: "host"
+    volumes:
+      - ./node1/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node1/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  redis2:
+    container_name: redis2
+    image: redis:latest
+    network_mode: "host"
+    volumes:
+      - ./node2/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node2/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  redis3:
+    container_name: redis3
+    image: redis:latest
+    network_mode: "host"
+    volumes:
+      - ./node3/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node3/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  redis4:
+    container_name: redis4
+    image: redis:latest
+    network_mode: "host"
+    volumes:
+      - ./node4/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node4/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  redis5:
+    container_name: redis5
+    image: redis:latest
+    network_mode: "host"
+    volumes:
+      - ./node5/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node5/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+  redis6:
+    container_name: redis6
+    image: redis:latest
+    network_mode: "host"
+    volumes:
+      - ./node6/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./node6/data:/data
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
