@@ -1,0 +1,26 @@
+#这里只简要说明一下流程
+
+BIO:
+ServerSocket绑定一个监听端口后，就阻塞在accept方法上，等客户端连接后，就开辟一条线程进行Socket通信；
+客户端Socket需要与服务端的端口建立Tcp连接，连接成功后，就可以通过socket的输入/输出流进行通信；
+
+伪异步IO:
+其实就是在BIO的服务端 建立一个线程池，将新建立的socket提交到线程池队列；
+之所以是伪异步IO，就是因为底层还是使用的阻塞IO,线程池只是节省了线程资源；
+
+Nio:
+Java Nio 主要的操作对象就channel(全双工通信)：ServerSocketChannel、SocketChannel
+Selector 多路复用器，服务端与客户端的Channel建立之后,就将这个Channel注册到selector上，并指定一个SelectionKey用来监听
+    select方法则获取所有就绪的SelectionKey集合，然后可以根据注册的SelectionKey类型 获取到对应的可accept/connect/读/写事件,另外还可以通过SelectionKey.channel()获取通道信息；
+至于Channel的数据读写则需要借助ByteBuffer
+
+基本的流程如下：
+服务端 开启一个Selector、一个ServerSocketChannel(需要绑定一个端口，配置为非阻塞)
+    然后将ServerSocketChannel注册到Selector上，监听一个accept key类型,当有客户端进行连接时就可以select到
+        select到之后 就通过ServerSocketChannel.accept建立一个与客户端进行通信的SocketChannel，然后再将这个channel注册到selector上，并监听一个read key类型
+        所以在下一次select时，如果客户端有发送数据，那么就可以select到这个key，进而通过ByteBuffer读写这个key.channel中的数据；
+
+客户端同样需要开启一个Selector、一个SocketChannel(连接服务端的ip:port，配置为非阻塞)
+    然后这里要先进行connect，也就是先将SocketChannel注册到Selector上，并注册一个connect key类型，
+    所以在selector.select时，就可以获取一个Connectable事件，如果完成建立连接，这时客户端就向服务端发送一条消息，并注册一个read key类型 用来获取服务端的应答；
+    在下一次selector.select时，如果服务端有应答，那么就可以select到这个key，同样通过ByteBuffer进行读取；
