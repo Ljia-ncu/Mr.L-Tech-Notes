@@ -56,7 +56,7 @@ public class NioServer {
 
         @Override
         public void run() {
-            while (!stop) {
+            while (!stop) { //stop
                 try {
                     //每隔1s
                     selector.select(1000);
@@ -114,7 +114,7 @@ public class NioServer {
                         readBuff.get(bytes);
                         String response = "server received! -> " + new String(bytes, StandardCharsets.UTF_8);
                         System.out.println(response);
-                        doWrite(sc, "server: i'm ok.");
+                        doWrite(sc);
                     } else if (readBytes < 0) {
                         key.cancel();
                         sc.close();
@@ -123,14 +123,12 @@ public class NioServer {
             }
         }
 
-        private void doWrite(SocketChannel sc, String response) throws IOException {
-            if (!StrUtil.isEmpty(response)) {
-                byte[] bytes = response.getBytes();
-                ByteBuffer writeBuff = ByteBuffer.allocate(bytes.length);
-                writeBuff.put(bytes);
-                writeBuff.flip();
-                sc.write(writeBuff);
-            }
+        private void doWrite(SocketChannel sc) throws IOException {
+            byte[] bytes = "server: i'm ok.".getBytes();
+            ByteBuffer writeBuff = ByteBuffer.allocate(bytes.length);
+            writeBuff.put(bytes);
+            writeBuff.flip();
+            sc.write(writeBuff);
         }
     }
 }
