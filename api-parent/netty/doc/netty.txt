@@ -1,7 +1,7 @@
 #这里只简要说明一下流程
 
 BIO:
-ServerSocket绑定一个监听端口后，就阻塞在accept方法上，等客户端连接后，就开辟一条线程进行Socket通信；
+ServerSocket绑定一个监听端口，就阻塞在accept方法上，等客户端连接后，就开辟一条线程进行Socket通信；
 客户端Socket需要与服务端的端口建立Tcp连接，连接成功后，就可以通过socket的输入/输出流进行通信；
 
 ----------------------------------------------------------------------
@@ -24,7 +24,7 @@ Selector 多路复用器，服务端与客户端的Channel建立之后,就将这
 
 客户端 同样需要开启一个Selector、一个SocketChannel(连接服务端的ip:port，配置为非阻塞)
     然后这里要先进行connect，也就是先将SocketChannel注册到Selector上，并注册一个connect key类型(等待服务端的accept)，
-    所以在selector.select时，就可以获取一个Connectable事件，如果完成建立连接，这时客户端就向服务端发送一条消息，并注册一个read key类型 用来获取服务端的应答；
+    所以在selector.select时，就可以获取一个Connectable事件，如果建立连接ok，这时客户端就向服务端发送一条消息，并注册一个read key类型 用来获取服务端的应答；
     在下一次selector.select时，如果服务端有应答，那么就可以select到这个key，同样通过ByteBuffer进行读取；
 
 ----------------------------------------------------------------------
@@ -34,3 +34,12 @@ Aio:
 
 客户端 开启AsynchronousSocketChannel,然后在connect操作中传入一个CompletionHandler回调，
     complete()表示连接成功后的操作，然后向服务端发送一条消息并等待服务端应答；
+
+----------------------------------------------------------------------
+netty: 实现非常简洁优雅
+服务端 需要用到两个线程组，一个用来处理连接，一个用来处理读写；
+    这里还需要一个BootStrap类，用来配置线程组、channel类型、TCP参数、以及childHandler事件处理器;
+    childHandler中一般需要加入消息解码器来解决业务上的消息粘包问题；
+客户端 只需要一个线程组用来连接，Bootstrap配置、childHandler与服务端基本一致；
+
+----------------------------------------------------------------------
