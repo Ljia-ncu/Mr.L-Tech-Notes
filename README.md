@@ -110,9 +110,19 @@
 
 ### 8 Netty
 
+- [x] BIO客户端/服务端实现（以及伪异步IO）；
 
+- [x] NIO客户端/服务端实现；
 
-### 9 Nginx.
+- [x] AIO客户端/服务端实现；
+
+- [x] Netty客户端/服务端实现；
+
+- [x] WebSocket服务端实现，客户端直接基于js；
+
+  
+
+### 9 Nginx
 
 - [ ] 搭建lvs + nginx + keepalived双机热备；
 - [ ] 阿里云ALB；
@@ -273,3 +283,7 @@
 
 
 ### 20 Prometheus + Grafana
+
+
+
+### 21 MyCat
